@@ -1,17 +1,12 @@
-from gpiozero import LED, Buzzer
+from gpiozero import LED
 from time import sleep
 
-# Define LED and Buzzer
-led = LED(17)  # LED connected to GPIO17
-buzzer = Buzzer(18)  # Buzzer connected to GPIO18
+led = LED(17)  # Using GPIO17 (Pin 11)
 
 while True:
     led.on()
-    buzzer.on()
-    print("LED and Buzzer ON")
+    print("LED ON")
     sleep(1)
-
     led.off()
-    buzzer.off()
-    print("LED and Buzzer OFF")
+    print("LED OFF")
     sleep(1)
