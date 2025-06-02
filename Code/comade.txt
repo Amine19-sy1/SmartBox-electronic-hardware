@@ -1,0 +1,7 @@
+ssh amine@raspberrypi243.local
+password: amine
+
+#to update raspberry pi and the installation repositories
+sudo apt-get update && apt-get upgrade
+
+sudo raspi-config

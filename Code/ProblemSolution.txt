@@ -1,0 +1,57 @@
+#no supabase in the raspberry pi withou vertual envirenement
+#but not recommanded
+pip3 install supabase --break-system-packages
+
+#############
+# Start teh listner when starting teh rapbery pi
+
+#make teh listner executable
+sudo nano /etc/systemd/system/listener.service
+
+
+[Unit]
+Description=SmartBox Listener Script
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/amine/Desktop/listener.py
+WorkingDirectory=/home/amine/Desktop
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=amine
+
+[Install]
+WantedBy=multi-user.target
+
+
+# Enable and start the service
+
+sudo systemctl daemon-reexec        # optional if fresh systemd confs
+sudo systemctl daemon-reload        # reload service definitions
+sudo systemctl enable listener.service  # enable on boot
+sudo systemctl start listener.service   # start it now
+
+
+
+
+NFC READER
+
+
+sudo raspi-config
+
+####STEPS ON THE INTERFACE
+Interface Options → I2C → Yes (enable)
+
+
+
+###########
+##RFID Reader insltall
+
+pip3 install mfrc522 --break-system-packages
+
+sudo apt update
+sudo apt install python3-mfrc522
+
+
+
